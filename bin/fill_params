@@ -1,11 +1,18 @@
 #!/usr/bin/env ruby
+#
+# test:
+# ruby -Ilib bin/fill_params
 
 require 'optparse'
 require 'ostruct'
+require 'config_manager'
 
 options = OpenStruct.new
 options.config_file = []
 options.verbose = false
+
+conf = ConfigManager.new
+conf.load 'test.yml'
 
 OptionParser.new do |opts|
   opts.banner = "Usage: fill_params [-f config.yml] [-v]"
