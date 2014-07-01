@@ -11,8 +11,7 @@ options = OpenStruct.new
 options.config_file = []
 options.verbose = false
 
-conf = ConfigManager.new
-conf.load 'test.yml'
+conf = ConfigManager.new('init.yml')
 
 OptionParser.new do |opts|
   opts.banner = "Usage: fill_params [-f config.yml] [-v]"
