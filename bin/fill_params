@@ -14,9 +14,9 @@ options.verbose = false
 conf = ConfigManager.new('init.yml')
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: fill_params [-f config.yml] [-v]"
+  opts.banner = 'Usage: fill_params [-f config.yml] [-v]'
 
-  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+  opts.on('-v', '--[no-]verbose', 'Run verbosely') do |v|
     options.verbose = v
   end
 end
