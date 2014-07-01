@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = ParameterHandler::VERSION
   spec.authors       = ["Krzysztof Hasiński"]
   spec.email         = ["krzysztof.hasinski+parameterhandler@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = "Parameters handler"
+  spec.description   = "A gem for filling in parameters automatically"
   spec.homepage      = ""
   spec.license       = "MIT"
 
