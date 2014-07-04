@@ -28,5 +28,3 @@ end.parse!
 conf = ConfigManager.new(options.init_file)
 parameter_filler = ParameterFiller.new(conf.get_config_files, options.verbose, true)
 parameter_filler.fill_file_list
-
-p options
