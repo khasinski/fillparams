@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-#
-# test:
+
+# For running without installation:
 # ruby -Ilib bin/fill_params
 
 require 'optparse'
@@ -14,7 +14,7 @@ options.verbose = false
 options.interactive = STDIN.isatty
 
 OptionParser.new do |opts|
-  opts.banner = 'Usage: fill_params [-i init.yml] [-v]'
+  opts.banner = 'Usage: fill_params [-i init.yml] [-v] [-n]'
 
   opts.on('-i', '--init [INIT_FILE]',
     'provide init file', '(list of configuration files to fill in)') do |init|
