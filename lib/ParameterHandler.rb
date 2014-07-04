@@ -1,4 +1,4 @@
-require "ParameterHandler/version"
+require 'ParameterHandler/version'
 
 module ParameterHandler
 

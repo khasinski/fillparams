@@ -9,7 +9,7 @@ require 'config_manager'
 require 'parameter_filler'
 
 options = OpenStruct.new
-options.init_file = "init.yml"
+options.init_file = 'init.yml'
 options.verbose = false
 
 OptionParser.new do |opts|
