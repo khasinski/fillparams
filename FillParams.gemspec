@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'fillparams'
   spec.version       = FillParams::VERSION
   spec.authors       = ['Krzysztof Hasiński', 'Justyna Wojtczak']
-  spec.email         = ['krzysztof.hasinski+parameterhandler@gmail.com']
-  spec.summary       = 'Parameters handler'
+  spec.email         = ['krzysztof.hasinski+fillparams@gmail.com']
+  spec.summary       = 'Parameters handler, for usage see github page'
   spec.description   = 'A gem for filling in parameters automatically'
-  spec.homepage      = ''
+  spec.homepage      = 'http://github.com/khasinski/fillparams'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
