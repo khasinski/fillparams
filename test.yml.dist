@@ -7,3 +7,5 @@ array:
   - array_elem_3: {'nested_obj_1':'text'}
 object:
   hash: "hash_value"
+
+nowy_parametr: 'aaa'

@@ -1,4 +1,4 @@
-require 'konf'
+require 'yaml'
 
 class ParameterFiller
 
@@ -40,8 +40,7 @@ class ParameterFiller
         config_data[key] = ask_for_param(key, default)
       end
     end
-    puts config_data.to_yaml
-    # save original file
+    File.write(file_name, config_data.to_yaml)
   end
 
   def load_yaml_file file_name
