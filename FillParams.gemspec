@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ParameterHandler/version'
+require 'FillParams/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'ParameterHandler'
-  spec.version       = ParameterHandler::VERSION
+  spec.name          = 'fillparams'
+  spec.version       = FillParams::VERSION
   spec.authors       = ['Krzysztof Hasiński']
   spec.email         = ['krzysztof.hasinski+parameterhandler@gmail.com']
   spec.summary       = 'Parameters handler'

@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in ParameterHandler.gemspec
+# Specify your gem's dependencies in FillParams.gemspec
 gemspec
