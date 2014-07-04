@@ -26,9 +26,7 @@ class ParameterFiller
     dist_file_name = file_name + '.dist'
     setup_files(file_name, dist_file_name)
     config_data = load_yaml_file file_name
-    raise ArgumentError, 'Invalid YAML in config file ' + file_name unless config_data
     dist_data = load_yaml_file dist_file_name
-    raise ArgumentError, 'Invalid YAML in .dist file ' + dist_file_name unless dist_data
     config_data = fill_parameters(config_data, dist_data)
     File.write(file_name, config_data.to_yaml)
   end
@@ -45,8 +43,13 @@ class ParameterFiller
     end
   end
 
-  def load_yaml_file file_name
-    YAML.load_file(file_name)
+  def load_yaml_file(file_name)
+    begin
+      data = YAML.load_file(file_name)
+    rescue Exception => e
+      raise ArgumentError, 'Invalid YAML in config file ' + file_name unless data
+    end
+    data
   end
 
   def setup_files(file_name, dist_file_name)
@@ -68,9 +71,7 @@ class ParameterFiller
   end
 
   def ask_for_param(key, default)
-    if interactive
-      print "Key \"#{key}\" (default: #{default}): "
-    end
+    print "Key \"#{key}\" (default: #{default}): " if interactive
     param = gets.chomp
     if param.empty? || !interactive
       param = default
