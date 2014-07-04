@@ -15,7 +15,7 @@ class ParameterFiller
   def fill_file_list
     puts @config_files
     @config_files.each do |file_name|
-      if interactive
+      if verbose
         puts 'Filling ' + file_name + '...'
       end
       fill_file file_name
@@ -32,8 +32,15 @@ class ParameterFiller
     config_data = load_yaml_file file_name
     dist_data = load_yaml_file dist_file_name
     params_to_fill = get_missing_data(config_data, dist_data)
+    puts params_to_fill
 
-    # ask about missing params
+    if !params_to_fill.empty?
+      puts 'Please provide values for missing params:'
+      params_to_fill.each do |key, default|
+        config_data[key] = ask_for_param(key, default)
+      end
+    end
+    puts config_data.to_yaml
     # save original file
   end
 
@@ -53,10 +60,15 @@ class ParameterFiller
     to_fill = {}
     dist_data.each do |key, value|
       if(!data.has_key?(key))
-        to_fill[:key] = :value
+        to_fill[key] = value
       end
     end
     to_fill
+  end
+
+  def ask_for_param(key, default)
+    print "Key \"#{key}\" (default: #{default}): "
+    gets.chomp
   end
 end
 
