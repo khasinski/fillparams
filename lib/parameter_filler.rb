@@ -35,7 +35,7 @@ class ParameterFiller
     puts params_to_fill
 
     if !params_to_fill.empty?
-      puts 'Please provide values for missing params:'
+      puts 'Please provide values for missing parameters:'
       params_to_fill.each do |key, default|
         config_data[key] = ask_for_param(key, default)
       end
@@ -67,7 +67,11 @@ class ParameterFiller
 
   def ask_for_param(key, default)
     print "Key \"#{key}\" (default: #{default}): "
-    gets.chomp
+    param = gets.chomp
+    if param.empty?
+      param = default
+    end
+    param
   end
 end
 
