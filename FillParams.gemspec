@@ -6,7 +6,7 @@ require 'FillParams/version'
 Gem::Specification.new do |spec|
   spec.name          = 'fillparams'
   spec.version       = FillParams::VERSION
-  spec.authors       = ['Krzysztof Hasiński']
+  spec.authors       = ['Krzysztof Hasiński', 'Justyna Wojtczak']
   spec.email         = ['krzysztof.hasinski+parameterhandler@gmail.com']
   spec.summary       = 'Parameters handler'
   spec.description   = 'A gem for filling in parameters automatically'
