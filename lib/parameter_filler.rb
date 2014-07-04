@@ -33,6 +33,9 @@ class ParameterFiller
   def load_yaml_file(file_name)
     begin
       data = YAML.load_file(file_name)
+      if false == data
+        data = {}
+      end
     rescue Exception => e
       raise ArgumentError, 'Invalid YAML in config file ' + file_name unless data
     end
@@ -42,7 +45,7 @@ class ParameterFiller
   def setup_files(file_name, dist_file_name)
     raise ArgumentError, 'Dist file not found for ' + file_name unless File.file?(dist_file_name)
     unless File.file?(file_name)
-      File.write(file_name, '{}') # TODO: remove this {}
+      File.write(file_name, '')
     end
     return
   end
@@ -53,7 +56,9 @@ class ParameterFiller
         data[key] = ask_for_param(key, value)
       end
       if(dist_data[key].is_a?(Hash))
-        data[key] = {}
+        if(!data.has_key?(key))
+          data[key] = {}
+        end
         data[key] = fill_parameters(data[key], dist_data[key])
       end
     end
