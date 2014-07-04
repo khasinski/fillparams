@@ -1,6 +1,7 @@
 # FillParams
 
 [![Gem Version](https://badge.fury.io/rb/fillparams.svg)](http://badge.fury.io/rb/fillparams)
+[![Code Climate](https://codeclimate.com/github/khasinski/parameterhandler.png)](https://codeclimate.com/github/khasinski/parameterhandler)
 
 This tool allows you to manage ignored YAML parameters in your config files. 
 It is inspired by [Incenteev ParameterHandler](https://github.com/Incenteev/ParameterHandler).
