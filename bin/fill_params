@@ -6,6 +6,7 @@
 require 'optparse'
 require 'ostruct'
 require 'config_manager'
+require 'parameter_filler'
 
 options = OpenStruct.new
 options.init_file = "init.yml"
@@ -14,8 +15,8 @@ options.verbose = false
 OptionParser.new do |opts|
   opts.banner = 'Usage: fill_params [-i init.yml] [-v]'
 
-  opts.on("-i", "--init [INIT_FILE]",
-    "provide init file", "(list of configuration files to fill in)") do |init|
+  opts.on('-i', '--init [INIT_FILE]',
+    'provide init file', '(list of configuration files to fill in)') do |init|
     options.init_file = init
   end
 
@@ -25,5 +26,7 @@ OptionParser.new do |opts|
 end.parse!
 
 conf = ConfigManager.new(options.init_file)
+parameter_filler = ParameterFiller.new(conf.get_config_files, options.verbose, true)
+parameter_filler.fill_file_list
 
 p options

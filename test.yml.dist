@@ -1,0 +1,8 @@
+test:
+  number: 1
+  float: 3.2
+  string: 'text'
+  array:
+    - "array_elem_1"
+    - "array_elem_2"
+    - array_elem_3: {'nested_obj_1':'text'}

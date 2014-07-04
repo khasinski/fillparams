@@ -1,3 +1,5 @@
+require 'konf'
+
 class ParameterFiller
 
   attr_reader :config_files
@@ -11,16 +13,22 @@ class ParameterFiller
   end
 
   def fill_file_list
-    # for each file in file list
-    # run fill_file
+    puts @config_files
+    @config_files.each do |file_name|
+      if interactive
+        puts 'Filling ' + file_name + '...'
+      end
+      fill_file file_name
+    end
   end
 
-  def fill_file file_name
+  def fill_file(file_name)
 
     dist_file_name = file_name + '.dist'
 
     setup_files(file_name, dist_file_name)
 
+    # TODO - check if both files are valid YAML
     config_data = load_yaml_file file_name
     dist_data = load_yaml_file dist_file_name
     params_to_fill = get_missing_data(config_data, dist_data)
@@ -30,19 +38,25 @@ class ParameterFiller
   end
 
   def load_yaml_file file_name
-
+    YAML.load(ERB.new(File.read(File.expand_path("../../#{file_name}", __FILE__))).result)
   end
 
   def setup_files(file_name, dist_file_name)
-    raise ArgumentError, 'Dist file not found' unless File.file?(dist_file_name)
-    if File.file?(file_name)
-      File.write(file_name, "")
+    raise ArgumentError, 'Dist file not found for ' + file_name unless File.file?(dist_file_name)
+    if !File.file?(file_name)
+      File.write(file_name, '{}') # TODO: remove this {}
     end
     return
   end
 
-  def get_missing_data(config_data, dist_data)
-
+  def get_missing_data(data, dist_data)
+    to_fill = {}
+    dist_data.each do |key, value|
+      if(!data.has_key?(key))
+        to_fill[:key] = :value
+      end
+    end
+    to_fill
   end
 end
 
