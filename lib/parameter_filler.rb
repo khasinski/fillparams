@@ -70,6 +70,8 @@ class ParameterFiller
     param = gets.chomp
     if param.empty?
       param = default
+    else
+      param = YAML.load(param)
     end
     param
   end

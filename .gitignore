@@ -21,3 +21,4 @@ tmp
 *.a
 .idea
 mkmf.log
+test.yml
