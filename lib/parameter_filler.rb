@@ -30,18 +30,6 @@ class ParameterFiller
     File.write(file_name, config_data.to_yaml)
   end
 
-  def fill_parameters(config_data, dist_data)
-    params_to_fill = get_missing_data(config_data, dist_data)
-    if !params_to_fill.empty?
-      if interactive
-        puts 'Please provide values for missing parameters:'
-      end
-      params_to_fill.each do |key, default|
-        config_data[key] = ask_for_param(key, default)
-      end
-    end
-  end
-
   def load_yaml_file(file_name)
     begin
       data = YAML.load_file(file_name)
@@ -59,14 +47,17 @@ class ParameterFiller
     return
   end
 
-  def get_missing_data(data, dist_data)
-    to_fill = {}
+  def fill_parameters(data, dist_data)
     dist_data.each do |key, value|
-      if(!data.has_key?(key))
-        to_fill[key] = value
+      if(!data.has_key?(key)) && !dist_data[key].is_a?(Hash)
+        data[key] = ask_for_param(key, value)
+      end
+      if(dist_data[key].is_a?(Hash))
+        data[key] = {}
+        data[key] = fill_parameters(data[key], dist_data[key])
       end
     end
-    to_fill
+    data
   end
 
   def ask_for_param(key, default)
