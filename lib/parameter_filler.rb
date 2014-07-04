@@ -33,7 +33,7 @@ class ParameterFiller
   def load_yaml_file(file_name)
     begin
       data = YAML.load_file(file_name)
-      if false == data
+      unless data
         data = {}
       end
     rescue Exception => e
@@ -52,11 +52,11 @@ class ParameterFiller
 
   def fill_parameters(data, dist_data)
     dist_data.each do |key, value|
-      if(!data.has_key?(key)) && !dist_data[key].is_a?(Hash)
+      if !data.has_key?(key) && !dist_data[key].is_a?(Hash)
         data[key] = ask_for_param(key, value)
       end
-      if(dist_data[key].is_a?(Hash))
-        if(!data.has_key?(key))
+      if dist_data[key].is_a?(Hash)
+        unless data.has_key?(key)
           data[key] = {}
         end
         data[key] = fill_parameters(data[key], dist_data[key])
