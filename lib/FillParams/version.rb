@@ -1,3 +1,3 @@
-module ParameterHandler
+module FillParams
   VERSION = '0.0.1'
 end
