@@ -38,7 +38,7 @@ class ParameterFiller
   end
 
   def load_yaml_file file_name
-    YAML.load(ERB.new(File.read(File.expand_path("../../#{file_name}", __FILE__))).result)
+    YAML.load_file(file_name)
   end
 
   def setup_files(file_name, dist_file_name)

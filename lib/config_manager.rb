@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require 'konf'
+require 'yaml'
 
 class ConfigManager
   attr_reader :init_file
@@ -9,7 +9,7 @@ class ConfigManager
   end
 
   def load yml_file
-    YAML.load(ERB.new(File.read(File.expand_path("../../#{yml_file}", __FILE__))).result)
+    YAML.load_file(yml_file)
   end
 
   def get_config_files
