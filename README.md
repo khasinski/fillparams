@@ -26,6 +26,7 @@ The script handler will ask you interactively for parameters which are missing
 in the parameters file, using the value of the dist file as default value.
 All prompted values are parsed as inline YAML, to allow you to define ``true``,
 ``false``, ``null`` or numbers easily.
+
 If fillparams is run in a non-interactive mode, the values of the dist file
 will be used for missing parameters.
 
@@ -45,7 +46,22 @@ This will look for a file called `init.yml`, which should contain:
         - more_configs.yml
         
 fillparams will look for each of those files and a corresponding ``.dist`` file (ex. ``config/database.yml.dist``),
-go through parameters and ask for the missing ones.
+go through parameters and ask for the missing ones. Check ``fillparams --help`` for more options. 
+
+**Important:** fillparams will ask for parameters that are strings, numbers, arrays, nulls (nils) and booleans. For
+hashes it will go deeper until it finds something to work on.
+
+For example in file ``database.yml.dist``
+
+    development:
+        username: dbuser
+        host: localhost
+        fancy_options: 
+            - a
+            - b
+            - c
+
+it will ask for `username`, `host` and `fancy_options`, it **won't** ask for `development` itself as it can go deeper into nested options.
 
 ## Contributing
 
