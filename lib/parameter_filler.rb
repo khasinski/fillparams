@@ -23,24 +23,26 @@ class ParameterFiller
   end
 
   def fill_file(file_name)
-
     dist_file_name = file_name + '.dist'
-
     setup_files(file_name, dist_file_name)
-
-    # TODO - check if both files are valid YAML
     config_data = load_yaml_file file_name
+    raise ArgumentError, 'Invalid YAML in config file ' + file_name unless config_data
     dist_data = load_yaml_file dist_file_name
-    params_to_fill = get_missing_data(config_data, dist_data)
-    puts params_to_fill
+    raise ArgumentError, 'Invalid YAML in .dist file ' + dist_file_name unless dist_data
+    config_data = fill_parameters(config_data, dist_data)
+    File.write(file_name, config_data.to_yaml)
+  end
 
+  def fill_parameters(config_data, dist_data)
+    params_to_fill = get_missing_data(config_data, dist_data)
     if !params_to_fill.empty?
-      puts 'Please provide values for missing parameters:'
+      if interactive
+        puts 'Please provide values for missing parameters:'
+      end
       params_to_fill.each do |key, default|
         config_data[key] = ask_for_param(key, default)
       end
     end
-    File.write(file_name, config_data.to_yaml)
   end
 
   def load_yaml_file file_name
@@ -49,7 +51,7 @@ class ParameterFiller
 
   def setup_files(file_name, dist_file_name)
     raise ArgumentError, 'Dist file not found for ' + file_name unless File.file?(dist_file_name)
-    if !File.file?(file_name)
+    unless File.file?(file_name)
       File.write(file_name, '{}') # TODO: remove this {}
     end
     return
@@ -66,9 +68,11 @@ class ParameterFiller
   end
 
   def ask_for_param(key, default)
-    print "Key \"#{key}\" (default: #{default}): "
+    if interactive
+      print "Key \"#{key}\" (default: #{default}): "
+    end
     param = gets.chomp
-    if param.empty?
+    if param.empty? || !interactive
       param = default
     else
       param = YAML.load(param)
