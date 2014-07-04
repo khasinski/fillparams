@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'Foobar' do
+describe ParameterFiller do
   pending "write it"
   it 'should be true' do
     expect(1).to eq 1

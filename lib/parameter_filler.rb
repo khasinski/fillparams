@@ -67,7 +67,7 @@ class ParameterFiller
 
   def ask_for_param(key, default)
     print "Key \"#{key}\" (default: #{default}): "
-    gets.chomp
+    YAML.load(gets.chomp)
   end
 end
 
