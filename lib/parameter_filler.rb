@@ -13,7 +13,6 @@ class ParameterFiller
   end
 
   def fill_file_list
-    puts @config_files
     @config_files.each do |file_name|
       if verbose
         puts 'Filling ' + file_name + '...'
@@ -71,7 +70,8 @@ class ParameterFiller
   end
 
   def ask_for_param(key, default)
-    print "Key \"#{key}\" (default: #{default}): " if interactive
+    return default unless interactive
+    print "Key \"#{key}\" (default: #{default}): "
     param = gets.chomp
     if param.empty? || !interactive
       param = default

@@ -11,6 +11,7 @@ require 'parameter_filler'
 options = OpenStruct.new
 options.init_file = 'init.yml'
 options.verbose = false
+options.interactive = STDIN.isatty
 
 OptionParser.new do |opts|
   opts.banner = 'Usage: fill_params [-i init.yml] [-v]'
@@ -23,8 +24,12 @@ OptionParser.new do |opts|
   opts.on('-v', '--[no-]verbose', 'Run verbosely') do |v|
     options.verbose = v
   end
+
+  opts.on('-n', '--non-interactive', 'Run without asking for parameters') do |n|
+    options.interactive = !n
+  end
 end.parse!
 
 conf = ConfigManager.new(options.init_file)
-parameter_filler = ParameterFiller.new(conf.get_config_files, options.verbose, STDIN.isatty)
+parameter_filler = ParameterFiller.new(conf.get_config_files, options.verbose, options.interactive)
 parameter_filler.fill_file_list
