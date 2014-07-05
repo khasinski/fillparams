@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-By default, the dist file is assumed to be in the same place than the parameters
+By default, the dist file is assumed to be in the same place as the parameters
 file, suffixed by ``.dist``.
 
 The script handler will ask you interactively for parameters which are missing
