@@ -10,7 +10,6 @@ rvm:
   - 2.1.1
   - ruby-head
   - jruby
-script: bundle exec rake
- addons:
-   code_climate:
-     repo_token: 79ba8cc14724962ab1cf77c54f210a65dae4e414d98c4af8269cebfcb88357ad
+addons:
+  code_climate:
+    repo_token: 79ba8cc14724962ab1cf77c54f210a65dae4e414d98c4af8269cebfcb88357ad
