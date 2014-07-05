@@ -14,9 +14,7 @@ class ParameterFiller
 
   def fill_file_list
     @config_files.each do |file_name|
-      if verbose
-        puts 'Filling ' + file_name + '...'
-      end
+      puts 'Filling ' + file_name + '...' if verbose
       fill_file file_name
     end
   end
@@ -33,9 +31,7 @@ class ParameterFiller
   def load_yaml_file(file_name)
     begin
       data = YAML.load_file(file_name)
-      unless data
-        data = {}
-      end
+      data = {} unless data
     rescue Exception => e
       raise ArgumentError, 'Invalid YAML in config file ' + file_name unless data
     end
@@ -44,9 +40,7 @@ class ParameterFiller
 
   def setup_files(file_name, dist_file_name)
     raise ArgumentError, 'Dist file not found for ' + file_name unless File.file?(dist_file_name)
-    unless File.file?(file_name)
-      File.write(file_name, '')
-    end
+    File.write(file_name, '') unless File.file?(file_name)
     return
   end
 
@@ -57,9 +51,7 @@ class ParameterFiller
         data[key] = ask_for_param(key, value)
       end
       if dist_data[key].is_a?(Hash)
-        unless data.has_key?(key)
-          data[key] = {}
-        end
+        data[key] = {} unless data.has_key?(key)
         data[key] = fill_parameters(data[key], dist_data[key])
       end
     end
