@@ -139,5 +139,58 @@ describe ParameterFiller do
         end
       end
     end
+
+    context 'yml with anchors and aliases' do
+      def sample_dist_data
+        YAML.load(<<-EOF
+          defaults: &defaults
+            adapter:  postgres
+            host:     localhost
+
+          development:
+            database: myapp_development
+            <<: *defaults
+
+          test:
+            database: myapp_test
+            <<: *defaults
+        EOF
+        )
+      end
+
+      def data_results
+        YAML.load(<<-EOF
+          defaults:
+            adapter:  postgres
+            host:     localhost
+
+          development:
+            database: myapp_development
+            adapter:  postgres
+            host:     localhost
+
+          test:
+            database: myapp_test
+            adapter:  postgres
+            host:     localhost
+        EOF
+        )
+      end
+
+      let(:pf) { ParameterFiller.new('', false, false) }
+      context 'when the data is nil' do
+        let(:data){ nil }
+        it 'returns data_results' do
+          expect(pf.fill_parameters(data, sample_dist_data)).to eq data_results
+        end
+      end
+      context 'when the dist data is nil' do
+        let(:dist_data){ nil }
+        let(:data){ sample_dist_data }
+        it 'returns data_results' do
+          expect(pf.fill_parameters(data, sample_dist_data)).to eq data_results
+        end
+      end
+    end
   end
 end
