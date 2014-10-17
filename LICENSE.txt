@@ -1,4 +1,4 @@
-Copyright (c) 2014 Krzysztof Hasiński
+Copyright (c) 2014 Krzysztof Hasiński, Justyna Wojtczak
 
 MIT License
 
