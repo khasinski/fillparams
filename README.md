@@ -1,5 +1,7 @@
 # FillParams
 
+[![Join the chat at https://gitter.im/khasinski/fillparams](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/khasinski/fillparams?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Gem Version](https://badge.fury.io/rb/fillparams.svg)](http://badge.fury.io/rb/fillparams)
 [![Code Climate](https://codeclimate.com/github/khasinski/fillparams.png)](https://codeclimate.com/github/khasinski/fillparams)
 [![Build Status](https://travis-ci.org/khasinski/fillparams.svg?branch=master)](https://travis-ci.org/khasinski/fillparams)
