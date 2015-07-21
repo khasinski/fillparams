@@ -4,6 +4,7 @@ notifications:
   email:
   - krzysztof.hasinski+fillparams@gmail.com
   - justine84+fillparams@gmail.com
+  webhooks: http://getbadges.getbadg.es/api/app/webhook/63be0257-a108-4917-af2e-f5ac82711187 
 rvm:
   - 1.9.3
   - 2.0.0
