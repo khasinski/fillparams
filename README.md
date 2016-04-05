@@ -4,6 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/khasinski/fillparams.png)](https://codeclimate.com/github/khasinski/fillparams)
 [![Build Status](https://travis-ci.org/khasinski/fillparams.svg?branch=master)](https://travis-ci.org/khasinski/fillparams)
 [![Coverage](https://codeclimate.com/github/khasinski/fillparams/coverage.png)](https://codeclimate.com/github/khasinski/fillparams)
+[![GetBadges Game](https://khasinski-fillparams.getbadges.io/shield/company/khasinski-fillparams)](https://khasinski-fillparams.getbadges.io/?ref=shield-game)
 
 This tool allows you to manage ignored YAML parameters in your config files. 
 It is inspired by [Incenteev ParameterHandler](https://github.com/Incenteev/ParameterHandler).
