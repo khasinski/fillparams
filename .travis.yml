@@ -3,15 +3,10 @@ language: ruby
 notifications:
   email:
   - krzysztof.hasinski+fillparams@gmail.com
-  - justine84+fillparams@gmail.com
-  webhooks: http://getbadges.getbadg.es/api/app/webhook/63be0257-a108-4917-af2e-f5ac82711187 
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.1
+  - 2.6.9
+  - 2.7.6
+  - 3.1.2
   - ruby-head
   - jruby
-addons:
-  code_climate:
-    repo_token: 79ba8cc14724962ab1cf77c54f210a65dae4e414d98c4af8269cebfcb88357ad
 

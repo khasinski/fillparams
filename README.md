@@ -1,9 +1,6 @@
 # FillParams
 
 [![Gem Version](https://badge.fury.io/rb/fillparams.svg)](http://badge.fury.io/rb/fillparams)
-[![Code Climate](https://codeclimate.com/github/khasinski/fillparams.png)](https://codeclimate.com/github/khasinski/fillparams)
-[![Build Status](https://travis-ci.org/khasinski/fillparams.svg?branch=master)](https://travis-ci.org/khasinski/fillparams)
-[![Coverage](https://codeclimate.com/github/khasinski/fillparams/coverage.png)](https://codeclimate.com/github/khasinski/fillparams)
 
 # Deprecated. Please use ENVs or encrypted credentials instead
 
