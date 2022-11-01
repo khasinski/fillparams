@@ -2,7 +2,9 @@
 
 [![Gem Version](https://badge.fury.io/rb/fillparams.svg)](http://badge.fury.io/rb/fillparams)
 
-# Deprecated. Please use ENVs or encrypted credentials instead
+# ⚠️ Deprecated 
+
+# Please use [ENVs](https://github.com/bkeepers/dotenv) or [encrypted credentials](https://edgeguides.rubyonrails.org/security.html#custom-credentials) instead
 
 This tool allows you to manage ignored YAML parameters in your config files. 
 It is inspired by [Incenteev ParameterHandler](https://github.com/Incenteev/ParameterHandler).
